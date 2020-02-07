@@ -1,3 +1,9 @@
+yunohost (4.0.0~alpha) unstable; urgency=low
+
+   - Tmp version for debian builds during experimental/alpha dev for Buster
+
+ -- Alexandre Aubin <alex.aubin@mailoo.org>  Fri, 7 Feb 2020 21:15:00  +0000
+
 yunohost (3.8.0~alpha) testing; urgency=low
 
   Placeholder for upcoming 3.8 to avoid funky stuff with version numbers in
