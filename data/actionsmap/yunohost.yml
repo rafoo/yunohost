@@ -969,6 +969,61 @@ settings:
                     help: Settings key
 
 #############################
+#      System Modules       #
+#############################
+
+module:
+    category_help: Manage system modules
+    actions:
+
+        ### module_add()
+        add:
+            action_help: Add a module
+            # api: POST /module
+            arguments:
+                name:
+                    help: System module name to add
+                -d:
+                    full: --description
+                    help: Description of the system module
+                -l:
+                    full: --log
+                    help: Absolute path to log file to display
+                    nargs: "+"
+                -t:
+                    full: --log_type
+                    help: Type of the log (file or systemd)
+                    nargs: "+"
+                    choices:
+                        - file
+                        - systemd
+                    default: file
+                --test_status:
+                    help: Specify a custom bash command to check the status of the service associated with the module. Note that it only makes sense to specify this if the corresponding systemd service does not return the proper information already.
+                --test_conf:
+                    help: Specify a custom bash command to check if the configuration of the module is valid or broken, similar to nginx -t.
+                --needs_exposed_ports:
+                    help: A list of ports that needs to be publicly exposed for the module to work as intended.
+                    nargs: "+"
+                    type: int
+                    metavar: PORT
+                -n:
+                    full: --need_lock
+                    help: Use this option to prevent deadlocks if the module does invoke yunohost commands.
+                    action: store_true
+                -s:
+                    full: --status
+                    help: Deprecated, old option. Does nothing anymore. Possibly check the --test_status option.
+
+        ### module_remove()
+        remove:
+            action_help: Remove a system module
+            # api: DELETE /module
+            arguments:
+                name:
+                    help: Module name to remove
+
+#############################
 #         Service           #
 #############################
 service:
